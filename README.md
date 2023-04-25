@@ -1,5 +1,5 @@
-# Flashcards-FrontEnd
-Flashcard app frontend
+# Flashy
+Flashcard webapp that allows user to create decks of flashcards and study them
 
 ## Design
 
