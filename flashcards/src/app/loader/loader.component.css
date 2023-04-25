@@ -1,0 +1,13 @@
+video {
+    display: block;
+    margin: 0 auto;
+} 
+
+.show{
+    opacity: 1 !important;
+}
+
+.step{
+    opacity: 0;
+    transition: .7s ease-in-out all;
+}
