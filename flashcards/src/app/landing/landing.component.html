@@ -1,1 +1,15 @@
-<p>landing works!</p>
+<div class="body">
+    <div [class.show]="fadein" class="Title"> 
+        <img id="flashcards" src = "..\..\assets\images\vectores\flashcards.svg" alt="My Happy SVG" width="55%" height="55%"/>
+        <h1>Welcome to <span id="name"> Flashy </span></h1>
+        <h2> A simple app that keeps track of flashcards</h2>
+    </div>
+
+    <div class="Buttons" style="justify-content: center;">
+        <button id="createButton">Create New Deck</button>
+        <div class="space"></div>
+        <button id="viewButton">View Library</button>
+    </div>
+</div>
+<app-footer></app-footer>
+

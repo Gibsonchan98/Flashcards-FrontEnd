@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
@@ -8,7 +12,7 @@ import { LandingComponent } from './landing/landing.component';
 import { DeckComponent } from './deck/deck.component';
 import { AboutComponent } from './about/about.component';
 import { LoaderComponent } from './loader/loader.component';
-import { HttpClient } from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { HttpClient } from '@angular/common/http';
     LandingComponent,
     DeckComponent,
     AboutComponent,
-    LoaderComponent
+    LoaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

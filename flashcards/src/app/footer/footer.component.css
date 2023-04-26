@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'MontserratAlternate';
+    src: url(/assets/Montserrat/MontserratAlternates-Regular.ttf) format("truetype");
+    font-weight:300;
+}
+
+#footer{
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 2.5rem; /*foorter height*/
+    font-family: 'MontserratAlternate';
+}
+
+footer span{
+    display: inline-block;
+    min-width: 230px;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+#About{
+    position: absolute;
+    right: -135px;
+    font-family: 'MontserratAlternate';
+    font-weight: 600;
+    line-height: 30px;
+    color: #D11149;
+}
+
+#About:hover{
+    cursor: pointer;
+    color: #B4E33D;
+}

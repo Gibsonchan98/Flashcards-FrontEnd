@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'MontserratAlternate';
+    src: url(/assets/Montserrat/MontserratAlternates-Regular.ttf) format("truetype");
+    font-weight:300;
+}
+
+@font-face {
+    font-family: 'MontserratAlternateLight';
+    src: url(/assets/Montserrat/MontserratAlternates-Light.ttf) format("truetype");
+    font-weight:300;
+}
+@font-face {
+    font-family: 'MontserratAlternateELight';
+    src: url(/assets/Montserrat/MontserratAlternates-ExtraLight.ttf) format("truetype");
+    font-weight:300;
+}
+
+.body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    font-family: 'MontserratAlternateLight';
+    
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.Title{
+    text-align: center;
+    padding-top: 10px;
+}
+
+#name{
+    color:#B4E33D;
+    font-family: 'MontserratAlternate';
+}
+
+h2{
+    font-size: 24px;
+    font-family: 'MontserratAlternateELight';
+}
+
+#flashcards{
+    z-index: -1;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    width:95%;
+    height:95%;
+    opacity: .65;
+}
+
+.Buttons{
+    position: absolute;
+    top: 40%;
+    left: 30%;
+}
+
+.space{
+    display: inline-block;
+    width:75px;
+    height:auto;
+}
+
+button{
+    background: #B4E33D;
+    box-shadow: 10px 0 10px black;
+    border-radius: 15px;
+    width: 250px;
+    height: 75px;
+    text-align: center;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+button:hover{
+    border: 2px solid #B4E33D;
+    background: black;
+    color: #B4E33D;
+}
+
