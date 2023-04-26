@@ -13,6 +13,7 @@ import { DeckComponent } from './deck/deck.component';
 import { AboutComponent } from './about/about.component';
 import { LoaderComponent } from './loader/loader.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreateDeckComponent } from './create-deck/create-deck.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
     DeckComponent,
     AboutComponent,
     LoaderComponent,
-    FooterComponent
+    FooterComponent,
+    CreateDeckComponent
   ],
   imports: [
     BrowserModule,

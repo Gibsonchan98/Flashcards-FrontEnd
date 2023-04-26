@@ -1,0 +1,38 @@
+.Library{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+h2{
+    font-family: 'MontserratAlternate';
+    font-size: 26px;
+}
+
+.Header{
+    text-align: left;
+}
+
+.btn {
+    height: 80px;
+    line-height: 80px;  
+    width: 80px;  
+    font-size: 55px;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: #B4E33D;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.Body{
+    display:flex; 
+    justify-content:center;
+    min-height:70vh;
+}
+
+.btncontainer{
+    position: absolute;
+    bottom: 10; 
+    right: 250px;
+}
