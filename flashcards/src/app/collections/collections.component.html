@@ -2,7 +2,21 @@
     <div class="Header">
         <h2>Library</h2>
     </div>
-    <div class="Body"> THIS WILL DISPLAY DECKS</div>
+    <div class="Body">
+        <div *ngFor="let decks of flashdecks">
+                <mat-card class="carddeck">
+                    <mat-card-header>
+                        <img mat-card-md-image src="..\..\assets\images\vectores\flashcards.svg">   
+                        <div class="space"></div>
+                        <div>
+                            <div class="category-name"> <h3> {{decks.category}} </h3></div>
+                            <div class="number-set"><p>Questions in this deck {{decks.length}}</p></div>
+                        </div>
+                    </mat-card-header>        
+            </mat-card>
+            <br>
+        </div> 
+    </div>
     <div class="btncontainer">
         <div class="btn"> + </div>
     </div>

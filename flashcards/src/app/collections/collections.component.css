@@ -12,6 +12,41 @@ h2{
     text-align: left;
 }
 
+.space{
+    display: inline-block;
+    width:50px;
+    height:auto;
+}
+
+.carddeck{
+    background-color: aliceblue;
+    border-radius: 4px;
+    width: 50%;
+    height: fit-content;
+    display: block;
+}
+
+mat-card img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    width: 25%;
+}
+
+.carddeck h3{
+    font-family: 'MontserratAlternateLight';
+    display: inline;
+}
+.Body{
+    display:block; 
+    justify-content:center;
+    min-height:60vh;
+    margin-left: 35%;
+}
+
+.btncontainer{
+    position: absolute;
+    bottom: 10; 
+    right: 250px;
+}
 .btn {
     height: 80px;
     line-height: 80px;  
@@ -23,16 +58,4 @@ h2{
     color: black;
     text-align: center;
     cursor: pointer;
-}
-
-.Body{
-    display:flex; 
-    justify-content:center;
-    min-height:70vh;
-}
-
-.btncontainer{
-    position: absolute;
-    bottom: 10; 
-    right: 250px;
 }
