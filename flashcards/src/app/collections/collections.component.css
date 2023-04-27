@@ -6,6 +6,7 @@
 h2{
     font-family: 'MontserratAlternate';
     font-size: 26px;
+    text-decoration: underline #B4E33D;
 }
 
 .Header{
@@ -26,6 +27,13 @@ h2{
     display: block;
 }
 
+.carddeck:hover{
+    cursor: pointer;
+    background-color: #D11149;
+    color: white;
+    width: 60%;
+    margin-left: -5%;
+}
 mat-card img{
     object-fit: cover; /*this makes the image in src fit to the size specified below*/
     width: 25%;

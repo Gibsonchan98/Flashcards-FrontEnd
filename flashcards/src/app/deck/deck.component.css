@@ -12,16 +12,21 @@ h2{
     font-size: 26px;
 }
 
+#LibraryLink:hover{
+    color: #B4E33D;
+    text-decoration: underline black;
+    cursor: pointer;
+}
+
+#categoryName{
+    text-decoration: underline #B4E33D;
+}
+
 #subTitle{
     font-family: 'MontserratAlternateLight';
     font-size: 22px;
     text-align: left;
     margin-left: -55%;
-}
-
-
-#categoryName{
-    text-decoration: underline #B4E33D;
 }
 
 .Body{

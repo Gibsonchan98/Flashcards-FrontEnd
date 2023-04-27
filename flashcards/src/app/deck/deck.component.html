@@ -1,11 +1,14 @@
 <div class="Library">
     <div class="Header">
-        <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library / </span> <span id="categoryName">{{deckCategory}}</span></h2>
+        <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library</span> / <span id="categoryName">{{deckCategory}}</span></h2>
     </div>
     <div class="Body">
         <app-card></app-card>
         <div class="cardsDipsplay">
             <h3 id="subTitle">Terms in set: {{numOfCards}}</h3>
+            <div class="table-div">
+
+            </div>
         </div>
         <div class="btncontainer" >
             <button> Add new card +</button>
