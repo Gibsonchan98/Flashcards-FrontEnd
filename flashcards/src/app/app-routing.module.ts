@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'Landing', component: LandingComponent}, 
   { path: 'Library', component: CollectionsComponent}, 
   { path: 'Card', component: CardComponent}, 
-  { path: 'Deck', component: DeckComponent}, 
+  { path: 'Deck/:category', component: DeckComponent}, 
   { path: 'About', component: AboutComponent},
   { path: 'Create', component: CreateDeckComponent}
 ];

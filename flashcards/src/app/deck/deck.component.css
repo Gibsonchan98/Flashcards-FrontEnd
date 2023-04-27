@@ -37,10 +37,28 @@ h2{
     margin-right: 35%;
 }
 
+table img{
+    object-fit: contain; /*The image keeps its aspect ratio, but is resized to fit within the given dimension*/
+    width: 50%;
+}
+
+.filter-green:hover{
+    filter: invert(81%) sepia(6%) saturate(4909%) hue-rotate(29deg) brightness(115%) contrast(78%);
+    object-fit: contain; /*The image keeps its aspect ratio, but is resized to fit within the given dimension*/
+    width: 55%;
+    cursor: pointer;
+}
+
 .space{
     display: inline-block;
     width:50px;
     height:auto;
+}
+
+.vspace{
+    display: inline-block;
+    width:auto;
+    height:50px;
 }
 
 button{

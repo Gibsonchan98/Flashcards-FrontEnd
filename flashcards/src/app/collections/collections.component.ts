@@ -33,7 +33,6 @@ export class CollectionsComponent implements OnInit{
           category = data[i].category;
           if(category != null && category != ''){
             carddeck.category = category;
-            console.log(category);
             let num = 0; 
             for(let j = i; j < data.length; j++){
               if(category == cards[j].category && cards[j].category !=  null && category != null){
@@ -42,17 +41,15 @@ export class CollectionsComponent implements OnInit{
               }
             } 
             carddeck.length = num;
-            decks.push(carddeck);
             this.flashdecks.push(carddeck);
           }
         }
-        console.log(decks);
       }
     })
   }
 
   goToDeck( category : any){
-    console.log(category);
+    this.router.navigate(['/Deck',category]);
   }
 
   createDeck(){

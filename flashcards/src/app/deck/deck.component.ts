@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { FlashcardapiService } from '../flashcardapi.service';
 import { Flashcard } from '../interfaces/Flashcard';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-deck',
   templateUrl: './deck.component.html',
@@ -11,11 +12,16 @@ export class DeckComponent implements OnInit{
   
   deckCategory:any;
   numOfCards : any;
-  constructor(private router : Router, private service :FlashcardapiService){}
+  deck : Array<Flashcard> = [];
+
+  constructor(private router : Router, private activatedRoute: ActivatedRoute, private service :FlashcardapiService){}
 
   ngOnInit(): void {
-    this.deckCategory = "Math"
     this.numOfCards = 3;
+    this.activatedRoute.params.subscribe(params => {
+      console.log('params', params);
+      this.deckCategory = params['category'];
+    })
   }
 
   goBackToLibrary(){
