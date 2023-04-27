@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'material-icons/iconfont/material-icons.css';
+
 @font-face {
     font-family: 'MontserratAlternate';
     src: url(/assets/Montserrat/MontserratAlternates-Regular.ttf) format("truetype");
@@ -17,3 +20,4 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

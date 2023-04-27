@@ -1,8 +1,8 @@
 export interface Flashcard{
     id?: number;
-    Question? : string;
-    Answer? : string;
-    Correct? : boolean;
-    Category? : string;
+    question? : string;
+    answer? : string;
+    correct? : boolean;
+    category? : string;
     state: "default" | "flipped";
 }
