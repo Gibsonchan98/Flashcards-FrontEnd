@@ -26,26 +26,50 @@ h2{
     font-family: 'MontserratAlternateLight';
     font-size: 22px;
     text-align: left;
-    margin-left: -55%;
+    margin-left: -40%;
 }
 
 .Body{
     display:block; 
     justify-content:center;
     min-height:60vh;
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 38%;
+    margin-right: 38%;
+}
+table{
+    border: 2px solid black;
+    min-width: fit-content;
+    margin-left: -8%;
 }
 
-table img{
+th{
+    font-family: 'MontserratAlternateLight';
+    border-bottom: 2px solid black;
+}
+td{
+    text-align: center;
+    min-width: fit-content;
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 22px;
+}
+
+#dAndETable{
+    margin-left: 0%;
+    border-collapse: collapse;
+}
+#dAndETable td{
+    min-width: fit-content;
+    padding: 10 px;
+}
+#dAndETable img{
     object-fit: contain; /*The image keeps its aspect ratio, but is resized to fit within the given dimension*/
-    width: 50%;
+    width: 55px;
+    height: 55px;
 }
-
 .filter-green:hover{
     filter: invert(81%) sepia(6%) saturate(4909%) hue-rotate(29deg) brightness(115%) contrast(78%);
     object-fit: contain; /*The image keeps its aspect ratio, but is resized to fit within the given dimension*/
-    width: 55%;
     cursor: pointer;
 }
 
@@ -58,11 +82,12 @@ table img{
 .vspace{
     display: inline-block;
     width:auto;
-    height:50px;
+    height:25px;
 }
 
 button{
     width: 170px;
     height: 55px;
     box-shadow: 1px 1px black;
+    margin-left: 15%;
 }
