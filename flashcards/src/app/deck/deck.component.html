@@ -1,4 +1,9 @@
-<div class="Library">   
+<div *ngIf="addCard">
+    <div id="CreateCardOverlay">
+        <p>hi</p>
+    </div>
+</div> 
+<div class="Library" *ngIf="!addCard">   
     <div class="Header">
         <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library</span> / <span id="categoryName">{{deckCategory}}</span></h2>
     </div>
@@ -39,9 +44,5 @@
     </div>
 </div>
 
-<div *ngIf="addCard">
-    <div id="CreateCardOverlay">
-        <p>hi</p>
-    </div>
-</div> 
+
 
