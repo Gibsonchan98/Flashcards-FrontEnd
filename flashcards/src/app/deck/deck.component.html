@@ -1,13 +1,13 @@
-<div class="Library">
+<div class="Library">   
     <div class="Header">
         <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library</span> / <span id="categoryName">{{deckCategory}}</span></h2>
     </div>
     <div class="Body">
         <app-card></app-card>
         <div class="cardsDipsplay">
-            <h3 id="subTitle">Terms in set: {{numOfCards}}</h3>
+            <h3 id="subTitle">Terms in set: &nbsp; {{deck.length}}</h3>
             <div class="vspace"></div>
-            <div class="table-div">
+            <div class="table-div" *ngFor="let card of deck">
                 <table id="cardsTable">
                     <thead>
                         <tr>
@@ -17,13 +17,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td headers="term card">fdhjdfjhfdshjfds</td>
-                            <td headers="definition card">jhfdjdfsjkdfjfkg</td>
-                            <td>
+                            <td headers="term card">{{card.question}}</td>
+                            <td headers="definition card">{{card.answer}}</td>
+                            <td style="border: none;">
                                 <table id="dAndETable">
                                     <tr>
-                                        <td> <img src="..\..\assets\images\vectores\pencil.svg" class="filter-green"> </td>
-                                        <td> <img src="..\..\assets\images\vectores\trashcan.svg" class="filter-green"> </td>
+                                        <td> <img src="..\..\assets\images\vectores\pencil.svg" class="filter-green" > </td>
+                                        <td> <img src="..\..\assets\images\vectores\trashcan.svg" class="filter-green" (click)="deleteCard(3)"> </td>
                                     </tr>
                                 </table>
                             </td>
@@ -33,10 +33,15 @@
             </div>
             <div class="vspace"></div>
         </div>
-        <div class="btncontainer" >
-            <button> Add new card +</button>
+        <div class="btncontainer">
+            <button (click)="addNewCard()"> Add new card +</button>
         </div>
     </div>
-    
-    
 </div>
+
+<div *ngIf="addCard">
+    <div id="CreateCardOverlay">
+        <p>hi</p>
+    </div>
+</div> 
+
