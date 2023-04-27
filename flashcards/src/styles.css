@@ -21,3 +21,19 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+button{
+    background: #B4E33D;
+    box-shadow: 10px 0 10px black;
+    border-radius: 15px;
+    width: 250px;
+    height: 75px;
+    text-align: center;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+button:hover{
+    border: 2px solid #B4E33D;
+    background: black;
+    color: #B4E33D;
+}

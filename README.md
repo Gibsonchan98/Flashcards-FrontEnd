@@ -10,3 +10,6 @@ Flashcard webapp that allows user to create decks of flashcards and study them
 
 ### Figma Board: 
     https://www.figma.com/file/dagz1dSqtXBoFZQ7m1WRlq/Projects?node-id=1-2&t=QYM8jT0OAGti92k4-0
+
+## Kanban Board
+ - https://trello.com/b/bJ9kyDzl/flashcards

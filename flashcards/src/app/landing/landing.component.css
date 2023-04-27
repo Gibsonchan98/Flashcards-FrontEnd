@@ -59,7 +59,7 @@ h2{
 
 .Buttons{
     position: absolute;
-    top: 40%;
+    top: 38%;
     left: 30%;
 }
 
@@ -67,22 +67,5 @@ h2{
     display: inline-block;
     width:75px;
     height:auto;
-}
-
-button{
-    background: #B4E33D;
-    box-shadow: 10px 0 10px black;
-    border-radius: 15px;
-    width: 250px;
-    height: 75px;
-    text-align: center;
-    font-size: 18px;
-    font-family: monospace;
-}
-
-button:hover{
-    border: 2px solid #B4E33D;
-    background: black;
-    color: #B4E33D;
 }
 
