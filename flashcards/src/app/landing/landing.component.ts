@@ -20,5 +20,7 @@ export class LandingComponent implements OnInit{
     this.router.navigateByUrl('Library');
   }
 
-  createDeck(){}
+  createDeck(){
+    this.router.navigateByUrl('Create');
+  }
 }

@@ -26,4 +26,15 @@ export class CollectionsComponent implements OnInit{
     this.flashdecks.push(carddeck2); 
   }
   
+  getCards(){
+    //gets cards
+  }
+
+  goToDeck( category : any){
+
+  }
+
+  createDeck(){
+    this.router.navigateByUrl('Create');
+  }
 }
