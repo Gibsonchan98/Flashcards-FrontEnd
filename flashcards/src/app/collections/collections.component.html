@@ -3,7 +3,7 @@
         <h2>Library</h2>
     </div>
     <div class="Body">
-        <div *ngFor="let decks of flashdecks">
+        <div *ngFor="let decks of flashdecks" (click)="goToDeck(decks.category)">
                 <mat-card class="carddeck">
                     <mat-card-header>
                         <img mat-card-md-image src="..\..\assets\images\vectores\flashcards.svg">   

@@ -31,7 +31,7 @@ export class CollectionsComponent implements OnInit{
   }
 
   goToDeck( category : any){
-
+    console.log(category);
   }
 
   createDeck(){
