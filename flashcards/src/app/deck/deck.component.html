@@ -1,7 +1,14 @@
-<div *ngIf="addCard">
+<div *ngIf="!addCard">
     <div id="CreateCardOverlay">
-        <div class ="QandAInput"></div>
-        <div class ="SaveandCancelButtons"></div>
+        <div id="whiteContainer">
+            <h2 style="margin-left: 20px;">Create Term</h2>
+            <div class ="QandAInput"></div>
+            <div class ="SaveandCancelButtons">
+                <button id="cancelbtn">Cancel</button>
+                <div class="space"></div>
+                <button id="savebtn">Save</button>
+            </div>
+        </div>
     </div>
 </div> 
 <div class="Library" *ngIf="!addCard">   
@@ -39,9 +46,9 @@
             </div>
             <div class="vspace"></div>
         </div>
-        <div class="btncontainer">
-            <button (click)="addNewCard()"> Add new card +</button>
-        </div>
+            <div class="button-section">
+                <button (click)="addNewCard()"> Add new card +</button>
+            </div>
     </div>
 </div>
 

@@ -43,14 +43,11 @@ table{
     width: 500px;
     min-width: fit-content;
     margin-left: -15%;
-    border: 2px solid black;
-    
 }
 
 th{
     font-family: 'MontserratAlternateLight';
     display:table-header-group inline;
-    border: 2px solid black;
 }
 
 td{
@@ -59,7 +56,7 @@ td{
     min-height: 50px;
     padding: 10px 20px;
     font-size: 22px;
-    border: 2px solid black;
+    border-top: 2px solid black;
     display: table-cell;
 }
 
@@ -104,16 +101,41 @@ button{
     width: 170px;
     height: 55px;
     box-shadow: 1px 1px black;
-    margin-left: 38%;
+}
+
+.button-section{
+    margin-left: 18%;
 }
 
 #CreateCardOverlay{
     width: 100%;
-    height: 900px;
+    height: 100vh;
     top: 0; 
     left: 0; 
     bottom: 0; 
     right: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(241,242,243,0.7);
     z-index: 2;
+}
+
+#whiteContainer{
+    position: absolute;
+    border: 3.5px solid#B4E33D;
+    border-radius: 25px;
+    background-color: #f2f3f4;
+    width: 750px;
+    height: 750px;
+    padding: 10px;
+    top: 8%;
+    left: 30%;
+}
+
+#cancelbtn{
+    border: 2px solid #B4E33D; 
+    background-color: aliceblue;
+}
+
+#cancelbtn:hover{
+    background-color: black;
+    color: white;
 }
