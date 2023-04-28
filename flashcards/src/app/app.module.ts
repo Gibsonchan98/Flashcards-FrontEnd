@@ -4,6 +4,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from "@angular/material/card";
+import {MatFormFieldModule, MatFormFieldAppearance, MatFormFieldDefaultOptions} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { MaterialIcon } from 'material-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +37,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule, 
     FormsModule, 
     MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule, BrowserAnimationsModule,
   ],
   providers: [],

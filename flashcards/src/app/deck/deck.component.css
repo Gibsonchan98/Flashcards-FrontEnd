@@ -130,6 +130,13 @@ button{
     left: 30%;
 }
 
+.saveandCancelButtons{
+    position: relative;
+    top: 80%;
+    right: 5%;
+    text-align: right;
+}
+
 #cancelbtn{
     border: 2px solid #B4E33D; 
     background-color: aliceblue;
