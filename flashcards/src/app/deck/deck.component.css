@@ -43,24 +43,28 @@ table{
     width: 500px;
     min-width: fit-content;
     margin-left: -15%;
+    border: 2px solid black;
     
 }
 
 th{
     font-family: 'MontserratAlternateLight';
+    display:table-header-group inline;
+    border: 2px solid black;
 }
 
 td{
     text-align: center;
-    max-width: fit-content;
-    height: 50px;
+    min-width: fit-content;
+    min-height: 50px;
     padding: 10px 20px;
     font-size: 22px;
     border: 2px solid black;
+    display: table-cell;
 }
 
 #dAndETable{
-    position: absolute;
+    display: inline;
     border: none;
     top: 209px;
     margin-left: 0%;

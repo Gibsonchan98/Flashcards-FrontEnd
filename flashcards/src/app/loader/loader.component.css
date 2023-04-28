@@ -1,6 +1,7 @@
 video {
     display: block;
     margin: 0 auto;
+    padding-top: 50px;
 } 
 
 .show{
@@ -10,4 +11,11 @@ video {
 .step{
     opacity: 0;
     transition: .8s ease-in-out all;
+}
+
+h1{
+    font-family: 'MontserratAlternate';
+    font-style: italic;
+    text-align: center;
+    font-size: 32px;
 }
