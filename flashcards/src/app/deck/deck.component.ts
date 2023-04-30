@@ -16,6 +16,7 @@ export class DeckComponent implements OnInit{
   addCard = false;
   confirm = false;
   edit = false; 
+  editedCard = {} as Flashcard;
   
   constructor(private router : Router, private activatedRoute: ActivatedRoute, private service :FlashcardapiService){}
 
@@ -59,13 +60,8 @@ export class DeckComponent implements OnInit{
     }
   }
 
-  editCard(id : any, question : any, answer : any, correct : any){
-    console.log("update" + id, question, answer, correct);
-    this.service.getCard(id).subscribe(carddata => {
-      if(carddata != null){
-        console.log(carddata);
-      }
-    })
+  editCard(card : Flashcard){
+    this.editedCard = card;
   }
 
   addNewCard(){
@@ -97,5 +93,21 @@ export class DeckComponent implements OnInit{
     this.addCard = false;
   }
   
+  saveEdit(ques : any, ans :any, id : any){
+    if(ques != '' && ans != ''){
+      this.editedCard.question = ques;
+      this.editedCard.answer = ans; 
+      this.service.getCard(id).subscribe(carddata => {
+        if(carddata != null){
+          console.log(this.editedCard);
+          // this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
+          //   if(data!=null){
+          //     console.log(data);
+          //   }
+          // })
+        }
+      })
+    }
+  }
 
 }
