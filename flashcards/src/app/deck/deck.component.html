@@ -3,24 +3,25 @@
         <div id="whiteContainer">
             <h2 style="margin-left: 20px;">Create Term</h2>
             <div class ="qandAInput"></div>
-                <mat-card>
+                <mat-card class="card-create">
+                    <mat-card-title> Question </mat-card-title>
                     <mat-card-content>
-                        <mat-form-field>
-                            <input placeholder="Question" type="text" matInput autocomplete="off"/>
-                        </mat-form-field>
+                        <mat-form-field  id="question-field">
+                            <mat-label>Question or Term</mat-label>
+                            <input matInput placeholder="Question example: What is 1 + 1?" type="text" autocomplete="off">
+                          </mat-form-field>
                     </mat-card-content>
                 </mat-card>
                 <div class="vspace"></div>
-                <mat-card>
+                <mat-card class="card-create">
+                    <mat-card-title> Answer </mat-card-title>
                     <mat-card-content>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Answer</mat-label>
-                            <input matInput placeholder="Answer">
-                            <mat-hint>Hint</mat-hint>
+                        <mat-form-field  id="answer-field" color="primary">
+                            <mat-label>Answer or Definition</mat-label>
+                            <input matInput placeholder="Answer example: It is 2" type="text" autocomplete="off">
                         </mat-form-field>
-                    </mat-card-content>
+                    </mat-card-content>              
                 </mat-card>
-                
             <div class ="saveandCancelButtons">
                 <button id="cancelbtn">Cancel</button>
                 <div class="space"></div>

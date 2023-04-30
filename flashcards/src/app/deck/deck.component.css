@@ -132,17 +132,30 @@ button{
 
 .saveandCancelButtons{
     position: relative;
-    top: 80%;
+    top: 10%;
     right: 5%;
     text-align: right;
 }
 
 #cancelbtn{
     border: 2px solid #B4E33D; 
-    background-color: aliceblue;
+    background-color: #f0f8ff;
 }
 
 #cancelbtn:hover{
     background-color: black;
     color: white;
+}
+
+.card-create{
+    background-color: white;
+    text-align: center;
+}
+
+.card-create mat-form-field{
+    margin-top: 20px;
+    width: 100%;
+    height: 170px;
+    text-align: center;
+    background-color: white;
 }
