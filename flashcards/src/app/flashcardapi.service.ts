@@ -24,9 +24,7 @@ export class FlashcardapiService {
   }
 
   public updateCard(id:any, card: any) : Observable<any>{
-    let qparams = new HttpParams()
-      .set('id', id);
-    return this.http.put(this.apiRoot, {params:qparams}, card) as Observable<any>;
+    return this.http.put(this.apiRoot + "/" + id, card) as Observable<any>;
   }
 
   public createCard(card : Flashcard) : Observable<any>{

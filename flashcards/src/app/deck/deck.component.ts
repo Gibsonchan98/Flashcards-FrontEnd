@@ -100,11 +100,11 @@ export class DeckComponent implements OnInit{
       this.service.getCard(id).subscribe(carddata => {
         if(carddata != null){
           console.log(this.editedCard);
-          // this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
-          //   if(data!=null){
-          //     console.log(data);
-          //   }
-          // })
+          this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
+            if(data!=null){
+              console.log(data);
+            }
+          })
         }
       })
     }
