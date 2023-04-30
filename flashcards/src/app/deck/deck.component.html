@@ -1,4 +1,4 @@
-<div *ngIf="!addCard">
+<div *ngIf="addCard">
     <div id="CreateCardOverlay">
         <div id="whiteContainer">
             <h2 style="margin-left: 20px;">Create Term</h2>
@@ -8,7 +8,7 @@
                     <mat-card-content>
                         <mat-form-field  id="question-field">
                             <mat-label>Question or Term</mat-label>
-                            <input matInput placeholder="Question example: What is 1 + 1?" type="text" autocomplete="off">
+                            <input matInput placeholder="Question example: What is 1 + 1?" type="text" autocomplete="off" #question>
                           </mat-form-field>
                     </mat-card-content>
                 </mat-card>
@@ -18,14 +18,14 @@
                     <mat-card-content>
                         <mat-form-field  id="answer-field" color="primary">
                             <mat-label>Answer or Definition</mat-label>
-                            <input matInput placeholder="Answer example: It is 2" type="text" autocomplete="off">
+                            <input matInput placeholder="Answer example: It is 2" type="text" autocomplete="off" #answer>
                         </mat-form-field>
                     </mat-card-content>              
                 </mat-card>
             <div class ="saveandCancelButtons">
-                <button id="cancelbtn">Cancel</button>
+                <button id="cancelbtn" (click)="cancel()">Cancel</button>
                 <div class="space"></div>
-                <button id="savebtn">Save</button>
+                <button id="savebtn" (click)="saveCard(question.value, answer.value)">Save</button>
             </div>
         </div>
     </div>
@@ -54,12 +54,13 @@
                             <td style="border: none;">
                                 <table id="dAndETable">
                                     <tr>
-                                        <td> <img src="..\..\assets\images\vectores\pencil.svg" class="filter-green" > </td>
-                                        <td> <img src="..\..\assets\images\vectores\trashcan.svg" class="filter-green" (click)="deleteCard(3)"> </td>
+                                        <td> <img src="..\..\assets\images\vectores\pencil.svg" class="filter-green" (click)="editCard(card.id, card.question, card.answer,card.correct)"> </td>
+                                        <td> <img src="..\..\assets\images\vectores\trashcan.svg" class="filter-green" (click)="deleteCard(card.id)"> </td>
                                     </tr>
                                 </table>
                             </td>
                         </tr>
+                        <div class="vspace"></div>
                     </tbody>
                 </table>
             </div>

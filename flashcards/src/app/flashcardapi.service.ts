@@ -16,15 +16,11 @@ export class FlashcardapiService {
   }
 
   public getCard(id:any): Observable<Flashcard>{
-    let qparams = new HttpParams()
-      .set('id', id);
-    return this.http.get(this.apiRoot + 'byId/', {params:qparams}) as Observable<Flashcard>;
+    return this.http.get(this.apiRoot + 'byId/' + id) as Observable<Flashcard>;
   }
 
   public deleteCard(id:any) : Observable<any>{
-    let qparams = new HttpParams()
-      .set('id', id);
-    return this.http.delete(this.apiRoot, {params:qparams}) as Observable<any>;
+    return this.http.delete(this.apiRoot + id) as Observable<any>;
   }
 
   public updateCard(id:any, card: any) : Observable<any>{

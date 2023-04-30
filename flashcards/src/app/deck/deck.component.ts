@@ -14,6 +14,7 @@ export class DeckComponent implements OnInit{
   numOfCards : any;
   deck : Array<Flashcard> = [];
   addCard = false;
+  confirm = false;
   
   constructor(private router : Router, private activatedRoute: ActivatedRoute, private service :FlashcardapiService){}
 
@@ -46,15 +47,53 @@ export class DeckComponent implements OnInit{
 
   deleteCard(id : any){
     console.log("delete " + id);
+    //pop up are you sure message
+    if(window.confirm("Are you sure you want to delete this card?")){
+      this.service.deleteCard(id).subscribe(data =>{
+        console.log(data);
+        if(data == true){
+          this.router.navigate(['/Deck',this.deckCategory]);
+        }
+      })
+    }
   }
 
   editCard(id : any, question : any, answer : any, correct : any){
-    console.log("delete " + id);
+    console.log("update" + id, question, answer, correct);
+    this.service.getCard(id).subscribe(carddata => {
+      if(carddata != null){
+        console.log(carddata);
+      }
+    })
   }
 
   addNewCard(){
     this.addCard = true;
-    console.log(this.addCard);
+  }
+
+  saveCard(question: any, answer:any){
+    if(question != '' && answer != ''){
+      let card = {} as Flashcard; 
+      card.question = question;
+      card.answer = answer; 
+      card.category = this.deckCategory;
+      card.correct = false;
+      this.service.createCard(card).subscribe(data => {
+        if(data != null){
+          console.log(data);
+          console.log("show success message");
+          this.router.navigate(['/Deck',this.deckCategory]);
+        } else{
+          console.log("show error message.");
+        }
+      })
+    } else{
+      console.log("THIS CANT BE NULL. SHOW ERROR MESSAGE")
+    }
+  }
+
+  cancel(){
+    this.addCard = false;
   }
   
 
