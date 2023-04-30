@@ -23,8 +23,16 @@ export class FlashcardapiService {
     return this.http.delete(this.apiRoot + id) as Observable<any>;
   }
 
-  public updateCard(id:any, card: any) : Observable<any>{
-    return this.http.put(this.apiRoot + "/" + id, card) as Observable<any>;
+  public updateCard(id:any, card: Flashcard) : Observable<any>{
+    console.log(card.question)
+    var body : any = {
+      "id": card.id,
+      "question": card.question,
+      "answer": card.answer,
+      "correct": card.correct,
+      "category": card.category 
+    }
+    return this.http.put(this.apiRoot + "/" + id, body) as Observable<any>;
   }
 
   public createCard(card : Flashcard) : Observable<any>{

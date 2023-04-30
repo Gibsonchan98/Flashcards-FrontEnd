@@ -14,7 +14,7 @@ export class DeckComponent implements OnInit{
   numOfCards : any;
   deck : Array<Flashcard> = [];
   addCard = false;
-  confirm = false;
+  deckD = true;
   edit = false; 
   editedCard = {} as Flashcard;
   
@@ -62,6 +62,8 @@ export class DeckComponent implements OnInit{
 
   editCard(card : Flashcard){
     this.editedCard = card;
+    this.edit = true;
+    this.deckD = false;
   }
 
   addNewCard(){
@@ -91,6 +93,7 @@ export class DeckComponent implements OnInit{
 
   cancel(){
     this.addCard = false;
+    this.edit = false;
   }
   
   saveEdit(ques : any, ans :any, id : any){
@@ -101,6 +104,8 @@ export class DeckComponent implements OnInit{
         if(carddata != null){
           console.log(this.editedCard);
           this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
+            console.log(this.editedCard.question);
+            console.log(data);
             if(data!=null){
               console.log(data);
             }
