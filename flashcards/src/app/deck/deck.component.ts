@@ -15,6 +15,7 @@ export class DeckComponent implements OnInit{
   deck : Array<Flashcard> = [];
   addCard = false;
   confirm = false;
+  edit = false; 
   
   constructor(private router : Router, private activatedRoute: ActivatedRoute, private service :FlashcardapiService){}
 
