@@ -24,7 +24,6 @@ export class FlashcardapiService {
   }
 
   public updateCard(id:any, card: Flashcard) : Observable<any>{
-    console.log(card.question)
     var body : any = {
       "id": card.id,
       "question": card.question,
@@ -33,6 +32,7 @@ export class FlashcardapiService {
       "category": card.category 
     }
     return this.http.put(this.apiRoot + "/" + id, body) as Observable<any>;
+    // return this.http.put(this.apiRoot + "/" + id, card) as Observable<any>;
   }
 
   public createCard(card : Flashcard) : Observable<any>{

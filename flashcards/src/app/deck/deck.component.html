@@ -30,7 +30,7 @@
         </div>
     </div>
 </div> 
-<div class="Library" *ngIf="!addCard">   
+<div class="Library" *ngIf="!addCard && !edit">   
     <div class="Header">
         <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library</span> / <span id="categoryName">{{deckCategory}}</span></h2>
     </div>

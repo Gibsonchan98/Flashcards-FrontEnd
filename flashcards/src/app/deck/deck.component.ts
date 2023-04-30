@@ -102,12 +102,11 @@ export class DeckComponent implements OnInit{
       this.editedCard.answer = ans; 
       this.service.getCard(id).subscribe(carddata => {
         if(carddata != null){
-          console.log(this.editedCard);
           this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
-            console.log(this.editedCard.question);
-            console.log(data);
+            this.edit = false;
+            this.router.navigate(['/Deck',this.deckCategory]);
             if(data!=null){
-              console.log(data);
+              this.router.navigate(['/Deck',this.deckCategory]);
             }
           })
         }
