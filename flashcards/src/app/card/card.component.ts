@@ -9,9 +9,10 @@ export class CardComponent {
   @Input() flashcard!:Flashcard[];
 
   index:any = 0;
-  
+  flipped = false;
+
   goNext(){
-    if(this.index != this.flashcard.length){
+    if(this.index != this.flashcard.length-1){
       this.index += 1;
     }
   }
@@ -21,4 +22,13 @@ export class CardComponent {
       this.index -= 1;
     }
   }
+
+  flipCard(){
+    if(this.flipped == true){
+      this.flipped = false;
+    } else {
+      this.flipped = true;
+    }  
+  }
+
 }

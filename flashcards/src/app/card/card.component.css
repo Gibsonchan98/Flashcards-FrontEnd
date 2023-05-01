@@ -1,16 +1,30 @@
+
+
 .card{
     background-color: aliceblue;
     border-radius: 4px;
-    width: 50%;
+    width: 600px;
     height: fit-content;
     display: block;
+    font-size: 30px;
+    text-align: center;
 }
 
 
+#flip-sign{
+    font-size: 35px;
+}
+
+#flip-sign:hover{
+    opacity: .8;
+    color: #B4E33D;
+    cursor: pointer;
+ }
+
 .btn-circle{
-    width: 70px;
-    height: 70px;
-    padding: 5px 18px;
+    width: 60px;
+    height: 60px;
+    padding: 1px 18px;
     border-radius: 60px;
     font-size: 40px;
     text-align:center;
@@ -23,4 +37,9 @@
     display: inline-block;
     width:50px;
     height:auto;
+}
+.vspace{
+    display: inline-block;
+    width:auto;
+    height:50px;
 }
