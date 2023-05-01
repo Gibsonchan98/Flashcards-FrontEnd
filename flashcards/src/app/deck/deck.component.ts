@@ -54,7 +54,7 @@ export class DeckComponent implements OnInit{
       this.service.deleteCard(id).subscribe(data =>{
         console.log(data);
         if(data == true){
-          this.router.navigate(['/Deck',this.deckCategory]);
+          this.reloadComponent(true);
         }
       })
     }
@@ -83,7 +83,7 @@ export class DeckComponent implements OnInit{
           console.log("show success message");
           this.addCard = false;
           this.edit = false;
-          this.router.navigate(['/Deck',this.deckCategory]);
+          this.reloadComponent(true);
         } else{
           console.log("show error message.");
         }
@@ -107,14 +107,24 @@ export class DeckComponent implements OnInit{
           this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
             this.addCard = false;
             this.edit = false;
-            this.router.navigate(['/Deck',this.deckCategory]);
             if(data!=null){
-              this.router.navigate(['/Deck',this.deckCategory]);
+              this.reloadComponent(true);
             }
           })
         }
       })
     }
   }
+
+  reloadComponent(self:boolean,urlToNavigateTo ?:string){
+    //skipLocationChange:true means dont update the url to / when navigating
+   console.log("Current route I am on:",this.router.url);
+   const url=self ? this.router.url :urlToNavigateTo;
+   this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+     this.router.navigate([`/${url}`]).then(()=>{
+       console.log(`After navigation I am on:${this.router.url}`)
+     })
+   })
+ }
 
 }
