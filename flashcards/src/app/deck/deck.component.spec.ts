@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { DeckComponent } from './deck.component';
 import { FlashcardapiService } from '../flashcardapi.service';
@@ -10,22 +11,29 @@ describe('DeckComponent', () => {
   let component: DeckComponent;
   let fixture: ComponentFixture<DeckComponent>;
   let router: Router;
+  let routerSpy: jasmine.SpyObj<Router>;
   let service: FlashcardapiService;
   let activatedRoute: ActivatedRoute;
+  let serviceSpy: jasmine.SpyObj<FlashcardapiService>;
 
   beforeEach(async () => {
+    const serviceSpyObj = jasmine.createSpyObj('FlashcardapiService', ['getAllCards', 'getCard', 'createCard', 'deleteCard', 'updateCard']);
+    const routerSpyObj = jasmine.createSpyObj('Router', ['navigateByUrl', 'navigate']);
+
     await TestBed.configureTestingModule({
       declarations: [ DeckComponent ],
-      imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule, HttpClientTestingModule ],
       providers: [
         {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of(convertToParamMap({
-              category: 'category'
+              category: 'test'
             }))
           }
-        }
+        },
+        { provide: FlashcardapiService, useValue: serviceSpyObj},
+        {provide: Router, useValue: routerSpyObj}
       ]
     })
     .compileComponents();
@@ -42,6 +50,23 @@ describe('DeckComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get cards for the given category', () => {
+    const category = 'test-category';
+    const mockData = [
+      { id: 1, question: 'Question 1', answer: 'Answer 1', category: 'test-category', correct: false },
+      { id: 2, question: 'Question 2', answer: 'Answer 2', category: 'test-category', correct: false },
+    ] as Flashcard[];
+    spyOn(service, 'getAllCards').and.returnValue(of(mockData));
+
+    activatedRoute.params = of({ category });
+
+    component.ngOnInit();
+
+    expect(service.getAllCards).toHaveBeenCalled();
+    expect(component.deck).toEqual(mockData);
+    expect(component.numOfCards).toBe(mockData.length);
   });
 
   it('should get cards', () => {
@@ -91,13 +116,37 @@ describe('DeckComponent', () => {
     expect(component.edit).toBeFalse();
   });
 
-  it('should save edit', () => {
-    const mockCard = { question: 'What is your name?', answer: 'My name is John', category: 'category', correct: false } as Flashcard;
-    const spy = spyOn(service, 'updateCard').and.returnValue(of(mockCard));
-    const navigateByUrlSpy = spyOn(router, 'navigateByUrl');
-    component.saveEdit('What is your name?', 'My name is John', 10);
-    expect(spy).toHaveBeenCalled();
-    expect(navigateByUrlSpy).toHaveBeenCalledWith('/Deck/category');
+  it('should save an edited card and navigate to deck page', () => {
+    const id = 1;
+    const question = 'edited question';
+    const answer = 'edited answer';
+    const editedCard: Flashcard = {id: id, question: question, answer: answer, category: 'test', correct: false, state :'default'};
+
+    serviceSpy.getCard.and.returnValue(of({id: id, question: 'question', answer: 'answer', category: 'test', correct: false, state:'default'}));
+    serviceSpy.updateCard.and.returnValue(of(editedCard));
+    
+    component.saveEdit(question, answer, id);
+
+    expect(serviceSpy.getCard).toHaveBeenCalledWith(id);
+    expect(serviceSpy.updateCard).toHaveBeenCalledWith(id, editedCard);
+    expect(component.addCard).toBeFalse();
+    expect(component.edit).toBeFalse();
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/Deck', 'test']);
   });
+
+  it('should not save an edited card if question or answer is empty', () => {
+    const id = '1';
+    const question = '';
+    const answer = 'edited answer';
+
+    component.saveEdit(question, answer, id);
+
+    expect(serviceSpy.getCard).not.toHaveBeenCalled();
+    expect(serviceSpy.updateCard).not.toHaveBeenCalled();
+    expect(component.addCard).toBeFalse();
+    expect(component.edit).toBeFalse();
+    expect(routerSpy.navigate).not.toHaveBeenCalled();
+  });
+
 
 });

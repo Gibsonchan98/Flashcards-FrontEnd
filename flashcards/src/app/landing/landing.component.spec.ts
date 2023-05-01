@@ -9,7 +9,7 @@ describe('LandingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, FooterComponent],
       declarations: [LandingComponent]
     })
     .compileComponents();
