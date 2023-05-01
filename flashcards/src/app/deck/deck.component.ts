@@ -81,6 +81,8 @@ export class DeckComponent implements OnInit{
         if(data != null){
           console.log(data);
           console.log("show success message");
+          this.addCard = false;
+          this.edit = false;
           this.router.navigate(['/Deck',this.deckCategory]);
         } else{
           console.log("show error message.");
@@ -103,6 +105,7 @@ export class DeckComponent implements OnInit{
       this.service.getCard(id).subscribe(carddata => {
         if(carddata != null){
           this.service.updateCard(this.editedCard.id, this.editedCard).subscribe(data =>{
+            this.addCard = false;
             this.edit = false;
             this.router.navigate(['/Deck',this.deckCategory]);
             if(data!=null){
