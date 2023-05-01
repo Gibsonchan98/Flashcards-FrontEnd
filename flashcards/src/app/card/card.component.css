@@ -1,0 +1,26 @@
+.card{
+    background-color: aliceblue;
+    border-radius: 4px;
+    width: 50%;
+    height: fit-content;
+    display: block;
+}
+
+
+.btn-circle{
+    width: 70px;
+    height: 70px;
+    padding: 5px 18px;
+    border-radius: 60px;
+    font-size: 40px;
+    text-align:center;
+    justify-content: center;
+    box-shadow: none;   
+}
+
+
+.space{
+    display: inline-block;
+    width:50px;
+    height:auto;
+}

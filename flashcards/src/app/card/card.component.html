@@ -1,1 +1,14 @@
-<p>card works!</p>
+<mat-card class="card">
+    <mat-card-header>
+    </mat-card-header>        
+    <mat-card-content>
+        {{flashcard[index].question}}
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="btn btn-light btn-circle" id="backbtn" (click)="goBack()">&larr;</button>
+        <div class="space"></div>
+        <div id="counter"> {{index + 1}} / {{flashcard.length}}</div>
+        <div class="space"></div>
+        <button class="btn btn-light btn-circle" id="fwdbtn" (click)="goNext()">&rarr;</button>
+    </mat-card-actions>
+</mat-card>
