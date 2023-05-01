@@ -9,8 +9,8 @@ describe('LandingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, FooterComponent],
-      declarations: [LandingComponent]
+      imports: [RouterTestingModule],
+      declarations: [LandingComponent, FooterComponent]
     })
     .compileComponents();
   });

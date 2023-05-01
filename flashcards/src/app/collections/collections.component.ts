@@ -53,6 +53,6 @@ export class CollectionsComponent implements OnInit{
   }
 
   createDeck(){
-    this.router.navigateByUrl('Create');
+    this.router.navigate(['/Create']);
   }
 }

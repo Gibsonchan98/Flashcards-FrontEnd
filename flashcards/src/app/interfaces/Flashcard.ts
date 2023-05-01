@@ -4,5 +4,5 @@ export interface Flashcard{
     answer? : string;
     correct? : boolean;
     category? : string;
-    state: "default" | "flipped";
+    state?: "default" | "flipped";
 }

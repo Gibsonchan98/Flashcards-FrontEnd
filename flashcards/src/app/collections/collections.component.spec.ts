@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { FlashcardapiService } from '../flashcardapi.service';
 import { CollectionsComponent } from './collections.component';
@@ -11,10 +12,11 @@ describe('CollectionsComponent', () => {
   let flashcardapiServiceSpy: any;
 
   beforeEach(async () => {
-    routerSpy = jasmine.createSpyObj(['navigate']);
+    routerSpy = jasmine.createSpyObj(['navigate'], ['navigateByUrl']);
     flashcardapiServiceSpy = jasmine.createSpyObj(['getAllCards']);
 
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [CollectionsComponent],
       providers: [
         { provide: Router, useValue: routerSpy },
@@ -65,7 +67,7 @@ describe('CollectionsComponent', () => {
   it('should navigate to /Create', () => {
     component.createDeck();
 
-    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('Create');
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/Create']);
   });
 
   it('should navigate to /Deck/:category', () => {

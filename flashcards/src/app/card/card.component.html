@@ -5,8 +5,8 @@
     <div class="vspace"></div>
     <div class="vspace"></div>       
     <mat-card-content>
-        <div *ngIf="!flipped">{{flashcard[index].question}}</div>
-        <div *ngIf="flipped">{{flashcard[index].answer}}</div>
+        <div *ngIf="!flipped" id="ques">{{flashcard[index].question}}</div>
+        <div *ngIf="flipped" id="ans">{{flashcard[index].answer}}</div>
     </mat-card-content>
     <div class="vspace"></div>
     <div class="vspace"></div>
