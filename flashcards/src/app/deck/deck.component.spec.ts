@@ -14,6 +14,8 @@ describe('DeckComponent', () => {
   let fixture: ComponentFixture<DeckComponent>;
   let mockFlashcardapiService : any;
   let mockActivatedRoute;
+  let mockRouter : any;
+  let flashServiceSpy : jasmine.SpyObj<FlashcardapiService>;
 
   const mockFlashcards: Array<Flashcard> = [
     { id: 1, category: 'Math', question: 'What is 1+1?', answer: '2' },
@@ -21,8 +23,12 @@ describe('DeckComponent', () => {
   ];
 
   beforeEach(async () => {
-    mockFlashcardapiService = jasmine.createSpyObj(['getAllCards']);
+    mockFlashcardapiService = jasmine.createSpyObj(['getAllCards', 'getCard', 'createCard','updateCard', 'deleteCard']);
+    const spy = jasmine.createSpyObj('FlashcardapiService', ['deleteCard']);
     mockFlashcardapiService.getAllCards.and.returnValue(of(mockFlashcards));
+    mockFlashcardapiService.updateCard.and.returnValue(of(mockFlashcards));
+    mockFlashcardapiService.getCard.and.returnValue(of(mockFlashcards));
+    mockRouter = jasmine.createSpyObj(['navigateByUrl', 'navigate']);
 
     mockActivatedRoute = {
       params: of({ category: 'Math' })
@@ -32,11 +38,15 @@ describe('DeckComponent', () => {
       imports: [RouterTestingModule, MatCardModule],
       declarations: [DeckComponent, CardComponent],
       providers: [
+        { provide: FlashcardapiService, useValue: spy},
         { provide: FlashcardapiService, useValue: mockFlashcardapiService },
         { provide: ActivatedRoute, useValue: mockActivatedRoute }
       ]
     })
       .compileComponents();
+
+      flashServiceSpy = TestBed.inject(FlashcardapiService) as jasmine.SpyObj<FlashcardapiService>;
+      flashServiceSpy.getAllCards.and.returnValue(of(mockFlashcards));
   });
 
   beforeEach(() => {
@@ -80,4 +90,70 @@ describe('DeckComponent', () => {
     expect(cardsTableEls[1].querySelector('tbody > tr > td[headers="definition card"]').textContent.trim()).toBe('4');
   });
 
+  it('should cancel', () => {
+    component.cancel();
+    expect(component.addCard).toBeFalse();
+    expect(component.edit).toBeFalse();
+  });
+
+  it('should add new card', () => {
+    component.addNewCard();
+    expect(component.addCard).toBeTrue();
+  });
+
+  it('should call the service to delete a card and reload the component if confirmed', () => {
+    const id = 1;
+    spyOn(window, 'confirm').and.returnValue(true);
+    flashServiceSpy.deleteCard.and.returnValue(of(true));
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+    component.deleteCard(id);
+
+    expect(flashServiceSpy.deleteCard).toHaveBeenCalledWith(id);
+    expect(spy).toHaveBeenCalledWith(true);
+  });
+
+  it('should not call the service to delete a card or reload the component if not confirmed', () => {
+    const id = 1;
+    spyOn(window, 'confirm').and.returnValue(false);
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+    component.deleteCard(id);
+
+    expect(flashServiceSpy.deleteCard).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should set editedCard, edit, and deckD variables correctly', () => {
+    const sampleCard: Flashcard = { id: 1, category: 'Math', question: 'What is 2+2?', answer: '4' };
+    component.editCard(sampleCard);
+    expect(component.editedCard).toEqual(sampleCard);
+    expect(component.edit).toBeTrue();
+    expect(component.deckD).toBeFalse();
+  });
+
+  it('should update a card and reload the component if valid question and answer are provided', () => {
+    // create a sample edited card
+    const editedCard = { id: 1, question: 'new question', answer: 'new answer' };
+    component.editedCard = editedCard;
+
+    // spy on service methods
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+
+    // call saveEdit function with valid question and answer
+    component.saveEdit('new question', 'new answer', 1);
+
+    // expect editedCard to be updated
+    expect(component.editedCard.question).toEqual('new question');
+    expect(component.editedCard.answer).toEqual('new answer');
+
+    // expect service methods to have been called with correct arguments
+    expect(mockFlashcardapiService.getCard).toHaveBeenCalledWith(1);
+    expect(mockFlashcardapiService.updateCard).toHaveBeenCalledWith(1, editedCard);
+
+    // expect addCard and edit flags to be set to false
+    expect(component.addCard).toBeFalse();
+    expect(component.edit).toBeFalse();
+
+    // expect reloadComponent to have been called with true argument
+    expect(spy).toHaveBeenCalledWith(true);
+  });
 });
