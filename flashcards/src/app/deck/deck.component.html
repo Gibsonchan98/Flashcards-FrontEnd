@@ -36,7 +36,8 @@
         <h2><span id="LibraryLink" (click)="goBackToLibrary()">Library</span> / <span id="categoryName">{{deckCategory}}</span></h2>
     </div>
     <div class="Body">
-        <app-card [flashcard]="deck"></app-card>
+        <app-card [flashcard]="deck" style="margin-left: -20px;"></app-card>
+        <div class="vspace"></div>
         <div class="cardsDipsplay">
             <h3 id="subTitle">Terms in set: {{deck.length}}</h3>
             <div class="vspace"></div>
