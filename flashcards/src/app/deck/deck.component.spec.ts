@@ -28,6 +28,7 @@ describe('DeckComponent', () => {
     mockFlashcardapiService.getAllCards.and.returnValue(of(mockFlashcards));
     mockFlashcardapiService.updateCard.and.returnValue(of(mockFlashcards));
     mockFlashcardapiService.getCard.and.returnValue(of(mockFlashcards));
+    mockFlashcardapiService.createCard.and.returnValue(of(mockFlashcards));
     mockRouter = jasmine.createSpyObj(['navigateByUrl', 'navigate']);
 
     mockActivatedRoute = {
@@ -101,6 +102,35 @@ describe('DeckComponent', () => {
     expect(component.addCard).toBeTrue();
   });
 
+  it('should create a new flashcard and reload the component', () => {
+    const question = 'What is the capital of France?';
+    const answer = 'Paris';
+    const card: Flashcard = {
+      question,
+      answer,
+      category: 'Math',
+      correct: false,
+    };
+
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+
+    component.saveCard(question, answer);
+
+    expect(mockFlashcardapiService.createCard).toHaveBeenCalledWith(card);
+    expect(spy).toHaveBeenCalledWith(true);
+  });
+
+  it('should not create a new flashcard when question or answer is empty', () => {
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+    component.saveCard('', 'answer');
+    expect(mockFlashcardapiService.createCard).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
+
+    component.saveCard('question', '');
+    expect(mockFlashcardapiService.createCard).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   it('should call the service to delete a card and reload the component if confirmed', () => {
     const id = 1;
     spyOn(window, 'confirm').and.returnValue(true);
@@ -155,5 +185,29 @@ describe('DeckComponent', () => {
 
     // expect reloadComponent to have been called with true argument
     expect(spy).toHaveBeenCalledWith(true);
+  });
+
+  it('should not update a card and reload the component if question or answer is empty', () => {
+    // create a sample edited card
+    const editedCard = { id: 1, question: 'new question', answer: 'new answer' };
+    component.editedCard = editedCard;
+
+    const spy = spyOn(component, 'reloadComponent').and.callThrough();
+
+    // call saveEdit function with empty question
+    component.saveEdit('', 'new answer', 1);
+
+    // expect editedCard to not be updated
+    expect(component.editedCard.question).toEqual('new question');
+    expect(component.editedCard.answer).toEqual('new answer');
+
+    // expect service methods to not have been called
+    expect(mockFlashcardapiService.getCard).not.toHaveBeenCalled();
+    expect(mockFlashcardapiService.updateCard).not.toHaveBeenCalled();
+
+    // expect addCard and edit flags to be set to false
+    expect(component.addCard).toBeFalse();
+    expect(component.edit).toBeFalse();
+
   });
 });
